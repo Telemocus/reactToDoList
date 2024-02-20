@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function ToDoList(){
 
-     const [ tasks, setTasks] = useState([ "Eat Pizza","Take a Bath", "Clean the room", "Ayanda Hates Pork"]);
+     const [ tasks, setTasks] = useState([]);
 
      const [newTask, setNewTask] = useState(" ");
 
@@ -11,11 +11,12 @@ function ToDoList(){
      }
 
      function addTask(index) {
-
+          setTasks(t => [ ...t, newTask]); 
+          setNewTask("");
      }
 
      function deleteTask(index) {
-
+          // deleteTask( d => [index])
      }
 
      function moveTaskUp(index) {
@@ -46,8 +47,8 @@ function ToDoList(){
                               <li key={index}>
                                    <span className="text">{task} {' '}</span>
                                    <button className="delete-btn" onClick={()=>deleteTask(index)}>Delete</button>
-                                   <button className="up-btn" onClick={()=>moveTaskUp(index)}>Up</button>
-                                   <button className="down-btn" onClick={()=>moveTaskDown(index)}>Down</button>
+                                   <button className="up-btn star" onClick={()=>moveTaskUp(index)}>Up</button>
+                                   <button className="down-btn star" onClick={()=>moveTaskDown(index)}>Down</button>
                               </li>
                          )}
                      </ol>
